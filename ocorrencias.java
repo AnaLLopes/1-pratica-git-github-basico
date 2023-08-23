@@ -7,13 +7,15 @@
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class ocorrencias {
     public static void main(String[] args) {
 
-        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 2, 4, 5, 6, 7, 8, 9, 2, 2, 2, 2, 2));
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 2, 4, 5, 6, 7, 8, 9, 6, 2, 2, 2, 9, 2, 2));
         System.out.println(nOcorrencias(list, 2));
         System.out.println(listRepeat(list));
+        System.out.println(nroRepeat(list));
 
     }
 
@@ -27,6 +29,25 @@ public class ocorrencias {
         }
         return count;
     }
+
+    // Metodo C
+    public static int nroRepeat(ArrayList<Integer> l) {
+        HashMap<Integer, Integer> frequencyMap = new HashMap<>();
+        
+        for (Integer i : l) {
+            frequencyMap.put(i, frequencyMap.getOrDefault(i, 0) + 1);
+        }
+        
+        int count = 0;
+        for (int freq : frequencyMap.values()) {
+            if (freq > 1) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+
 
     // Método D
     public static ArrayList<Integer> listRepeat(ArrayList<Integer> l) {
